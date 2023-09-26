@@ -7,6 +7,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
+  signInWithRedirect,
 } from "firebase/auth";
 import { redirect } from "react-router-dom";
 export const AppContext = createContext();
@@ -18,7 +19,7 @@ export const AppProvider = ({ children }) => {
   const signInWithGoogle = async () => {
     try {
       const auth = getAuth();
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithRedirect(auth, provider);
       localStorage.setItem("isAuth", true);
       setIsAuth(true);
     } catch (error) {
